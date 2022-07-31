@@ -11,31 +11,20 @@ import java.util.Map;
 
 public class Sorting {
 	
-	public static void pageSort(Hashtable<?, Integer> t,int occur)
-	{
-		 //Transfer as List and sort it
-	       ArrayList<Map.Entry<?, Integer>> l = new ArrayList(t.entrySet());
-	       Collections.sort(l, new Comparator<Map.Entry<?, Integer>>(){
-
-	         public int compare(Map.Entry<?, Integer> o1, Map.Entry<?, Integer> o2) {
-	            return o1.getValue().compareTo(o2.getValue());
-	        }});
-	      
-	       Collections.reverse(l);
-	       if(occur!=0) {
-		       System.out.println("\n-----------------Web Page Ranking----------------\n");
-		       
-		       int n = 5;
-		       int j = 0;
-		       System.out.printf( "%-10s %s\n", "Sr. No.", "Name and occurance" );
-		       System.out.println("-------------------------------------------------");
-				while (l.size() > j && n>0){
-					System.out.printf("\n%-10d| %s\n", j+1, l.get(j));
-					j++;
-					n--;
-				}
-				System.out.println("\n-------------------------------------------------\n");
-	       }
+	public static void sortKey(Map<Integer, String> hm) {
+		Map<Integer, String> map=new HashMap<Integer, String>();  
+		System.out.println("After Sorting");  
+		
+		TreeMap<Integer,String> tm=new  TreeMap<Integer,String> (hm);  
+		Iterator itr=tm.keySet().iterator();               
+		while(itr.hasNext())    
+		{    
+			int key=(int)itr.next();  
+			System.out.println("Occurrences:  "+key+"     File_name:   "+hm.get(key));  
+		}   
+		
+		//Map<Integer, String> reverseSortedMap = new TreeMap<Integer,String>(Collections.reverseOrder()); 
+		//reverseSortedMap.putAll(hm);
+		//System.out.println(reverseSortedMap);	 
 	}
-
 }
